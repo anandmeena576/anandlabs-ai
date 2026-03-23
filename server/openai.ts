@@ -1,17 +1,22 @@
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export async function generateWorkflow(text: string) {
-  const response = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      { role: "system", content: "You generate automation workflows." },
-      { role: "user", content: text }
-    ],
-  });
+  const response = await fetch(
+    "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=" + process.env.API_KEY,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [{ text }]
+          }
+        ]
+      })
+    }
+  );
 
-  return response.choices[0].message;
+  const data = await response.json();
+
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
 }
