@@ -1,2 +1,2 @@
-# anandlab-ai
+# anandlabs-ai
 Ai work space 
