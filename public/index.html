@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AnandLabs AI</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    #chat-box {
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+      height: 300px;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .msg {
+      margin: 10px 0;
+    }
+
+    .user {
+      color: #38bdf8;
+    }
+
+    .bot {
+      color: #22c55e;
+    }
+
+    input {
+      width: 70%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      background: #38bdf8;
+      color: black;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AnandLabs AI 🤖</h1>
+
+  <div id="chat-box"></div>
+
+  <input type="text" id="input" placeholder="Type your message..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("input");
+      const chatBox = document.getElementById("chat-box");
+
+      const message = input.value;
+      if (!message) return;
+
+      // User message show
+      chatBox.innerHTML += `<div class="msg user">You
