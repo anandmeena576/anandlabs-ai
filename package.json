@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/anandmeena576/anandlabs-ai#readme",
   "devDependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@types/express": "^5.0.6",
     "@types/node": "^25.5.0",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2"
