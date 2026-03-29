@@ -1,8 +1,8 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import type { Request, Response } from "express"; // ✅ FIX
 import cors from "cors";
 import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import path from "path";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public")); // frontend serve
+app.use(express.static("public"));
 
 // Gemini setup
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
