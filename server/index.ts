@@ -1,8 +1,11 @@
-import express from "express";
-import type { Request, Response } from "express"; // 
-import cors from "cors";
-import dotenv from "dotenv";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+// Types ko require nahi kiya ja sakta, isliye inhe aise define karein
+// Agar aapko error aaye toh niche Request/Response ki jagah 'any' use kar sakte hain
+import { Request, Response } from "express"; 
 
 dotenv.config();
 
@@ -31,7 +34,7 @@ app.post("/api/chat", async (req: Request, res: Response) => {
     });
 
     const result = await model.generateContent(message);
-    const response = result.response.text();
+    const response = await result.response.text();
 
     res.json({ reply: response });
 
