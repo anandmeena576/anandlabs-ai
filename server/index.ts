@@ -1,11 +1,9 @@
+// Strict CommonJS configuration ke liye perfect code
+
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-// Types ko require nahi kiya ja sakta, isliye inhe aise define karein
-// Agar aapko error aaye toh niche Request/Response ki jagah 'any' use kar sakte hain
-import { Request, Response } from "express"; 
 
 dotenv.config();
 
@@ -18,10 +16,15 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Gemini setup
+// Note: Variable types yahan inline declare kiye gaye hain bina upar import kiye.
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
-// Route
-app.post("/api/chat", async (req: Request, res: Response) => {
+// Route with proper TypeScript types without top-level imports
+// isse syntax error nahi aayega strict commonjs mode main.
+app.post("/api/chat", async (
+  req: import('express').Request, 
+  res: import('express').Response
+) => {
   try {
     const { message } = req.body;
 
