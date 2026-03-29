@@ -1,4 +1,3 @@
-// Strict CommonJS configuration ke liye perfect code
 
 const express = require("express");
 const cors = require("cors");
