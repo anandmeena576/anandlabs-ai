@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES6",                          /* Output standard (ES6 compatibility). */
-    "module": "CommonJS",                     /* Forces output to use require(). KEY CHANGE. */
-    "moduleResolution": "Node",              /* Tells TS where to find modules. */
-    "esModuleInterop": true,                  /* Allows require() on ESM libraries (v. impt). */
-    "forceConsistentCasingInFileNames": true,  /* Ensures consistency across OS. */
-    "strict": true,                           /* Full strict type checking. */
-    "skipLibCheck": true,                     /* Skip type check of declaration files. */
-    "rootDir": "./",                          /* Project root for relative paths. */
-    "outDir": "./dist"                        /* Where compiled JS files will go. */
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "rootDir": "./server",
+    "outDir": "./dist",
+
+    "types": ["node"]
   },
-  "include": ["server/**/*"],                 /* Files to compile. */
+  "include": ["server"],
   "exclude": ["node_modules"]
 }
